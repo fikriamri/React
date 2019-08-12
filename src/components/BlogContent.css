@@ -1,0 +1,40 @@
+.blog-content {
+  width: 90%;
+}
+
+.button {
+  width: 200px;
+  border: 1px solid black;
+}
+
+.title {
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+table,
+td {
+  border: none;
+}
+
+.bottom-button {
+  margin-left: 0px;
+  width: 100%;
+  background-color: #f7f7f7;
+  height: 50px;
+}
+
+.teaser-text {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  color: black;
+}
+
+.update {
+  color: grey;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 13px;
+}

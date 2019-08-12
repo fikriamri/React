@@ -1,0 +1,40 @@
+/* footer css */
+footer {
+  background-color: #19345e;
+  color: white;
+  padding: 25px 0 5px 0;
+}
+.facebook {
+  display: inline;
+}
+.Instagram {
+  display: inline;
+  padding: 0 10px;
+}
+.Twitter {
+  display: inline;
+  padding: 0 10px;
+}
+.LinkedIn {
+  display: inline;
+}
+.SocialMedia,
+h5 {
+  font-size: 14px;
+  font-family: SF Compact Display;
+  font-weight: semibold;
+  text-align: left;
+}
+
+.sosmed {
+  text-align: center;
+}
+
+h5 {
+  padding: 20px;
+  border-left: 1px solid rgb(34, 105, 163);
+}
+
+.aligness {
+  float: left;
+}

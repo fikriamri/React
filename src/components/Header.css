@@ -1,0 +1,39 @@
+/* header css */
+header {
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  height: 89px;
+  z-index: 10;
+}
+
+img.logo {
+  margin-top: 11px;
+  margin-left: 35px;
+}
+
+#logo {
+  margin-top: 11px;
+  margin-left: 35px;
+}
+
+.menu {
+  padding-top: 30px;
+  text-align: right;
+}
+
+.menu a {
+  font-family: "Muli", sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #19345e;
+}
+
+.menu a:hover {
+  color: #f47522;
+}
+
+.menu li {
+  display: inline;
+  margin-right: 35px;
+}

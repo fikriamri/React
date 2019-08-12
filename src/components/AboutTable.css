@@ -1,0 +1,19 @@
+table,
+th,
+td {
+  border: 1px solid #707070;
+  border-collapse: collapse;
+  font-family: "Muli", sans-serif;
+  font-size: 14px;
+  color: #19345e;
+  padding: 5px 20px;
+  margin-left: 70px;
+}
+
+.td2 {
+  padding: 5px 32px;
+}
+
+.td3 {
+  padding: 5px 33px;
+}

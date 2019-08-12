@@ -1,0 +1,17 @@
+#about {
+  color: #f47522;
+}
+
+.about-me {
+  background-color: #f4f7fc;
+  height: 132px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  margin: 43px 90px 42px 115px;
+  color: #19345e;
+}

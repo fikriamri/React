@@ -1,0 +1,57 @@
+/* home css */
+.wrapper-home {
+  padding-top: 200px;
+  padding-bottom: 89px;
+}
+
+#home {
+  color: #f47522;
+}
+
+.home {
+  background-image: url("../img/bg-img.png");
+  background-size: 100%;
+  background-position: fixed;
+}
+
+.name1 {
+  font-family: Roboto;
+  font-weight: medium;
+  font-size: 25px;
+  color: #19345e;
+}
+.name2 {
+  font-family: Roboto;
+  font-size: 85px;
+  font-weight: bold;
+  text-align: left;
+  color: #19345e;
+  border: 30;
+}
+
+.name3 {
+  font-family: Roboto;
+  font-size: 35px;
+  font-weight: medium;
+  text-align: left;
+  color: #19345e;
+}
+.name4 {
+  color: white;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #f47522;
+  border-radius: 10px;
+  text-align: center;
+  padding: 8px 15px 8px 15px;
+}
+.contain {
+  width: 80%;
+  margin: auto;
+}
+.home-image {
+  width: 355px;
+  border-radius: 360%;
+  /* margin-top: 120px; */
+}

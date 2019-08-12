@@ -1,0 +1,16 @@
+.image-about {
+  position: relative;
+}
+
+.about-me-img {
+  border-radius: 10px;
+  margin: 51px 100px;
+  width: 250px;
+}
+
+.dot {
+  position: absolute;
+  margin-top: -102px;
+  margin-left: 60px;
+  left: 0;
+}

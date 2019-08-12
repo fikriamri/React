@@ -1,0 +1,37 @@
+.side-bar-header,
+.side-bar-content,
+a {
+  color: #19345e;
+  margin-top: 10px;
+  padding-left: 10px;
+}
+
+.wrapper-side-bar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.side-bar-header {
+  font-size: 15px;
+  padding-right: 36px;
+}
+
+.side-bar-content {
+  font-size: 13px;
+}
+
+.number {
+  color: white;
+  background-color: red;
+}
+
+.square {
+  width: 30px;
+  height: 18px;
+  color: white;
+  background-color: red;
+  border-radius: 13px;
+  margin-left: 10px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+}

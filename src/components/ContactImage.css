@@ -1,0 +1,23 @@
+#left-image {
+  margin-left: 132px;
+  z-index: 100;
+  margin: auto;
+}
+.box-biru {
+  background-color: rgba(25, 52, 94, 0.65);
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 792px;
+  opacity: 65%;
+}
+
+.nol {
+  padding-right: 0;
+  padding-left: 0;
+  background-image: url("../img/charles-rRWiVQzLm7k-unsplash.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 512px;
+  height: 792px;
+}
