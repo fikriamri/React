@@ -38,7 +38,9 @@ function Header() {
                   <a href="contact.html">contact</a>
                 </li>
                 <li>
-                  <a href="contact.html">blog</a>
+                  <a href="" id="blog">
+                    blog
+                  </a>
                 </li>
               </ul>
             </div>

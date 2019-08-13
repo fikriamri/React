@@ -2,11 +2,6 @@ import React from "react";
 import "./BlogSidebar.css";
 import axios from "axios";
 
-const apiKey = "fc103a4f703e409e8dc8504d5d61b3b5";
-const baseUrl = "https://newsapi.org/v2/";
-const urlEverything =
-  baseUrl + "everything?" + "q=indonesia&" + "apiKey=" + apiKey;
-
 class BlogSidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +11,10 @@ class BlogSidebar extends React.Component {
   }
 
   componentDidMount = () => {
+    const apiKey = "fc103a4f703e409e8dc8504d5d61b3b5";
+    const baseUrl = "https://newsapi.org/v2/";
+    const urlEverything =
+      baseUrl + "everything?" + "q=indonesia&" + "apiKey=" + apiKey;
     const self = this;
     axios
       .get(urlEverything)
@@ -30,7 +29,7 @@ class BlogSidebar extends React.Component {
       });
   };
   render() {
-    console.log("test");
+    console.log(this.state.listNews);
     return (
       <div>
         <div className="card" style={{ width: "100%" }}>

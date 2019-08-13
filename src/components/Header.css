@@ -1,4 +1,8 @@
 /* header css */
+#blog {
+  color: #f47522;
+}
+
 header {
   background-color: #ffffff;
   position: fixed;
