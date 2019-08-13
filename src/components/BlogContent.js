@@ -3,48 +3,83 @@ import "./BlogContent.css";
 import blackHeart from "../img/heart.png";
 import share from "../img/share.png";
 import like from "../img/like.png";
+import axios from "axios";
 
-function BlogContent() {
-  return (
-    <div>
-      <div class="card" style={{ width: "100%" }}>
-        <img
-          class="card-img-top"
-          src="https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1540808310/i0kisnjcodrxieyhik8v.jpg"
-          alt="Card image cap"
-        />
-        <h4 className="title">
-          Nikahi Rakyat Jelata, Putri Ayako dari Jepang Lepaskan Gelar Kerajaan
-        </h4>
-        <p className="teaser-text">
-          Putri Ayako dari Jepang resmi dinikahi pria dari kalangan jelata, Kei
-          Moriya, pada Senin (29/10). Dengan pernikahan ini, Putri Ayako resmi
-          melepaskan status keluarga kerajaan yang disandangnya.
-        </p>
-        <p className="update">Last updated 3 minutes ago</p>
-        <table className="bottom-button text-center">
-          <tr>
-            <td>
-              <a href="#">
-                <img src={blackHeart} width="20px" />
+const apiKey = "fc103a4f703e409e8dc8504d5d61b3b5";
+const baseUrl = "https://newsapi.org/v2/";
+const urlHeadline =
+  baseUrl + "top-headlines?" + "country=id&" + "apiKey=" + apiKey;
+
+class BlogContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listNews: []
+    };
+  }
+
+  componentDidMount() {
+    const self = this;
+    axios
+      .get(urlHeadline)
+      // Handle success
+      .then(function(response) {
+        self.setState({ listNews: response.data.articles });
+        console.log(response);
+      })
+      // Handle Error
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        {/* dislice agar hanya memunculkan data 1-5 */}
+        {this.state.listNews.slice(0, 5).map(item => {
+          return (
+            <div className="card content" style={{ width: "100%" }}>
+              <img
+                className="card-img-top"
+                src={item.urlToImage}
+                alt="Card image cap"
+              />
+              <a href={item.url}>
+                <h4 className="title">{item.title}</h4>
               </a>
-            </td>
-            <td>
-              <a href="#">
-                <img src={share} width="20px" />
-              </a>
-            </td>
-            <td>
-              <a href="#">
-                {" "}
-                <img src={like} width="20px" />
-              </a>
-            </td>
-          </tr>
-        </table>
+              <p className="teaser-text">{item.description}</p>
+              <p className="update">
+                published at: {item.publishedAt.slice(0, 10)}
+              </p>
+              <table className="bottom-button text-center">
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="#">
+                        <img src={blackHeart} width="20px" />
+                      </a>
+                    </td>
+                    <td>
+                      <a href="#">
+                        <img src={share} width="20px" />
+                      </a>
+                    </td>
+                    <td>
+                      <a href="#">
+                        {" "}
+                        <img src={like} width="20px" />
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          );
+        })}
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default BlogContent;
