@@ -3,8 +3,11 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import "./Login.css";
+import { connect } from "unistore/react";
+import { store, actions } from "./Store";
+// import {actions} from
 
-const loginHost = "https://reactchallenge.free.beeceptor.com/login";
+const loginHost = "https://loginah.free.beeceptor.com/login";
 
 class Login extends React.Component {
   constructor(props) {
@@ -37,17 +40,25 @@ class Login extends React.Component {
     const self = this;
     axios.post(loginHost, data).then(function(response) {
       console.log(response);
-      localStorage.setItem("nama", response.data.nama);
-      localStorage.setItem("email", response.data.email);
-      localStorage.setItem("isLogin", 1);
+      // localStorage.setItem("nama", response.data.nama);
+      // localStorage.setItem("email", response.data.email);
+      // localStorage.setItem("isLogin", 1);
+      self.props.setNama(response.data.nama);
+      self.props.setEmail(response.data.email);
+      self.props.setLogin(response.data.isLogin);
+      console.log(response);
+      console.log(self.props.nama);
+      console.log(self.props.email);
+      console.log(self.props.isLogin);
       self.props.history.push("/");
     });
   };
 
   renderRedirect = () => {
-    const isLogin = JSON.parse(localStorage.getItem("isLogin"));
-    console.log(isLogin);
-    if (isLogin == 1) {
+    // const isLogin = JSON.parse(localStorage.getItem("isLogin"));
+    // const isLogin = this.props.isLogin;
+    // console.log(this.props.isLogin);
+    if (this.props.isLogin === true) {
       return <Redirect to="/" />;
     }
   };
@@ -67,4 +78,8 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+// export default Login;
+export default connect(
+  "login, nama, email, isLogin",
+  actions
+)(Login);

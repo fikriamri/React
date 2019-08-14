@@ -7,15 +7,17 @@ import Footer from "./components/Footer";
 import BlogSidebar from "./components/BlogSidebar";
 import BlogContent from "./components/BlogContent";
 import Search from "./components/Search";
+import { actions } from "./Store";
+import { connect } from "unistore/react";
+// import {store} from './Store'
 
-const apiKey = "9a5dcc59b8d449ebbb116d88d043689f";
+const apiKey = "06a3f3d6fe8b44d28a0b37c3b4e3efd6";
 const baseUrl = "https://newsapi.org/v2/everything?";
 
 class Blog extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listNews: [],
       search: {
         placeHolder: "search...",
         keyword: "search..."
@@ -37,7 +39,7 @@ class Blog extends React.Component {
       axios
         .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
         .then(function(response) {
-          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          self.props.setListNews(response.data.articles.slice(0, 5));
           console.log(response);
         })
         // Handle Error
@@ -48,7 +50,7 @@ class Blog extends React.Component {
       axios
         .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
         .then(function(response) {
-          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          self.props.setListNews(response.data.articles.slice(0, 5));
           console.log(response);
         })
         // Handle Error
@@ -63,8 +65,10 @@ class Blog extends React.Component {
     axios
       .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
       .then(function(response) {
-        self.setState({ listNews: response.data.articles.slice(0, 5) });
+        // self.setState({ listNews: response.data.articles.slice(0, 5) });
+        self.props.setListNews(response.data.articles.slice(0, 5));
         console.log(response);
+        console.log(self.props.listNews);
       })
       // Handle Error
       .catch(function(error) {
@@ -73,7 +77,13 @@ class Blog extends React.Component {
   };
 
   render() {
-    if (JSON.parse(localStorage.getItem("isLogin")) === null) {
+    {
+      console.log(this.props.nama);
+      console.log(this.props.email);
+      console.log(this.props.isLogin);
+      console.log(this.props.listNews);
+    }
+    if (this.props.isLogin === false) {
       return <Redirect to={{ pathname: "/signin" }} />;
     } else {
       return (
@@ -88,11 +98,11 @@ class Blog extends React.Component {
                     value={this.state.search.placeHolder}
                     onChange={this.handleSearch}
                   />
-                  <BlogSidebar data={this.state.listNews} />
+                  <BlogSidebar data={this.props.listNews} />
                   {console.log(this.state.listNews)}
                 </div>
                 <div className="col-md-8">
-                  <BlogContent data={this.state.listNews} />
+                  <BlogContent data={this.props.listNews} />
                 </div>
               </div>
             </div>
@@ -104,4 +114,8 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog;
+// export default Blog;
+export default connect(
+  "login, nama, email, isLogin, listNews",
+  actions
+)(Blog);

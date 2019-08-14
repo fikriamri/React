@@ -2,10 +2,18 @@ import React from "react";
 import "./HeaderNews.css";
 import logo_Alta from "../img/news.png";
 import { Link } from "react-router-dom";
+import { actions } from "../Store";
+import { connect } from "unistore/react";
 // import Category from "./Category";
 // import SearchField from "react-search-field";
 
-function Header(props) {
+function HeaderNews(props) {
+  const clickSignOut = () => {
+    console.log("props", props);
+    props.setNama("");
+    props.setEmail("");
+    props.setLogin(false);
+  };
   return (
     <div>
       <header>
@@ -30,13 +38,9 @@ function Header(props) {
                   <Link to="/signin">sign in</Link>
                 </li>
                 <li>
-                  <Link
-                    to="/"
-                    onClick={() => {
-                      localStorage.removeItem("isLogin");
-                    }}
-                  >
+                  <Link to="/signin" onClick={clickSignOut}>
                     sign out
+                    {console.log(props.isLogin)}
                   </Link>
                 </li>
               </ul>
@@ -49,4 +53,8 @@ function Header(props) {
   );
 }
 
-export default Header;
+// export default Header;
+export default connect(
+  "isLogin",
+  actions
+)(HeaderNews);

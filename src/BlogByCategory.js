@@ -7,15 +7,17 @@ import Footer from "./components/Footer";
 import BlogSidebar from "./components/BlogSidebar";
 import BlogContent from "./components/BlogContent";
 import Search from "./components/Search";
+import { connect } from "unistore/react";
+import { actions } from "./Store";
 
-const apiKey = "9a5dcc59b8d449ebbb116d88d043689f";
+const apiKey = "06a3f3d6fe8b44d28a0b37c3b4e3efd6";
 const baseUrl = "https://newsapi.org/v2/everything?";
 
 class BlogByCategory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listNews: [],
+      // listNews: [],
       search: {
         placeHolder: "search...",
         keyword: "search..."
@@ -35,7 +37,8 @@ class BlogByCategory extends React.Component {
             apiKey
         )
         .then(function(response) {
-          self.setState({ listNews: response.data.articles });
+          self.props.setListNews(response.data.articles);
+          // self.setState({ listNews: response.data.articles });
           console.log(response);
         });
     }
@@ -61,7 +64,8 @@ class BlogByCategory extends React.Component {
             apiKey
         )
         .then(function(response) {
-          self.setState({ listNews: response.data.articles });
+          self.props.setListNews(response.data.articles);
+          // self.setState({ listNews: response.data.articles });
           console.log(response);
         })
         // Handle Error
@@ -72,7 +76,8 @@ class BlogByCategory extends React.Component {
       axios
         .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
         .then(function(response) {
-          self.setState({ listNews: response.data.articles });
+          self.props.setListNews(response.data.articles);
+          // self.setState({ listNews: response.data.articles });
           console.log(response);
         })
         // Handle Error
@@ -87,7 +92,8 @@ class BlogByCategory extends React.Component {
     axios
       .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
       .then(function(response) {
-        self.setState({ listNews: response.data.articles });
+        self.props.setListNews(response.data.articles);
+        // self.setState({ listNews: response.data.articles });
         console.log(response);
       })
       // Handle Error
@@ -97,7 +103,7 @@ class BlogByCategory extends React.Component {
   };
 
   render() {
-    if (JSON.parse(localStorage.getItem("isLogin")) === null) {
+    if (this.props.isLogin === null) {
       return <Redirect to={{ pathname: "/signin" }} />;
     } else {
       return (
@@ -112,11 +118,11 @@ class BlogByCategory extends React.Component {
                     value={this.state.search.placeHolder}
                     onChange={this.handleSearch}
                   />
-                  <BlogSidebar data={this.state.listNews.slice(0, 5)} />
-                  {console.log(this.state.listNews)}
+                  <BlogSidebar data={this.props.listNews.slice(0, 5)} />
+                  {console.log(this.props.listNews)}
                 </div>
                 <div className="col-md-8">
-                  <BlogContent data={this.state.listNews.slice(15, 20)} />
+                  <BlogContent data={this.props.listNews.slice(15, 20)} />
                 </div>
               </div>
             </div>
@@ -128,4 +134,8 @@ class BlogByCategory extends React.Component {
   }
 }
 
-export default BlogByCategory;
+// export default BlogByCategory;
+export default connect(
+  "login, nama, email, isLogin, listNews",
+  actions
+)(BlogByCategory);

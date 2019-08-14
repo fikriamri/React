@@ -1,6 +1,7 @@
 import React from "react";
 import "./BlogSidebar.css";
-import axios from "axios";
+import { actions } from "../Store";
+import { connect } from "unistore/react";
 
 function BlogSidebar(props) {
   return (
@@ -15,6 +16,7 @@ function BlogSidebar(props) {
       </div>
       {/* dislice agar hanya memunculkan data 1-5 */}
       {props.data.map((item, key) => {
+        // console.log("from store", props.listNews);
         return (
           <div className="card" style={{ width: "100%" }}>
             <div className="wrapper-side-bar ">
@@ -35,4 +37,8 @@ function BlogSidebar(props) {
   );
 }
 
-export default BlogSidebar;
+// export default BlogSidebar;
+export default connect(
+  "login, nama, email, isLogin",
+  actions
+)(BlogSidebar);

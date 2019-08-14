@@ -1,9 +1,11 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import "./Profile.css";
+import { connect } from "unistore/react";
+import { actions } from "./Store";
 
-function Profile() {
-  if (JSON.parse(localStorage.getItem("isLogin")) === null) {
+function Profile(props) {
+  if (props.isLogin === false) {
     return <Redirect to={{ pathname: "/signin" }} />;
   } else {
     return (
@@ -17,4 +19,8 @@ function Profile() {
   }
 }
 
-export default Profile;
+// export default Profile;
+export default connect(
+  "login, nama, email, isLogin",
+  actions
+)(Profile);
