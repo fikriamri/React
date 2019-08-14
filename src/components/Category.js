@@ -12,9 +12,6 @@ function Category() {
                 <Link to="/source/axios">axios</Link>
               </li>
               <li>
-                <Link to="/source/bbc-news">BBC News</Link>
-              </li>
-              <li>
                 <Link to="/source/buzzfeed">Buzzfeed</Link>
               </li>
               <li>
@@ -22,6 +19,23 @@ function Category() {
               </li>
               <li>
                 <Link to="/source/daily-mail">Daily Mail</Link>
+              </li>
+              <li>
+                <Link to="/source/entertainment-weekly">
+                  entertainment weekly
+                </Link>
+              </li>
+              <li>
+                <Link to="/source/fortune">fortune</Link>
+              </li>
+              <li>
+                <Link to="/source/google-news">Google News</Link>
+              </li>
+              <li>
+                <Link to="/source/hacker-news">hacker News</Link>
+              </li>
+              <li>
+                <Link to="/source/ign">ign</Link>
               </li>
             </ul>
           </div>

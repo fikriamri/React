@@ -35,7 +35,7 @@ class BlogByCategory extends React.Component {
             apiKey
         )
         .then(function(response) {
-          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          self.setState({ listNews: response.data.articles });
           console.log(response);
         });
     }
@@ -61,7 +61,7 @@ class BlogByCategory extends React.Component {
             apiKey
         )
         .then(function(response) {
-          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          self.setState({ listNews: response.data.articles });
           console.log(response);
         })
         // Handle Error
@@ -72,7 +72,7 @@ class BlogByCategory extends React.Component {
       axios
         .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
         .then(function(response) {
-          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          self.setState({ listNews: response.data.articles });
           console.log(response);
         })
         // Handle Error
@@ -87,7 +87,7 @@ class BlogByCategory extends React.Component {
     axios
       .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
       .then(function(response) {
-        self.setState({ listNews: response.data.articles.slice(0, 5) });
+        self.setState({ listNews: response.data.articles });
         console.log(response);
       })
       // Handle Error
@@ -104,7 +104,7 @@ class BlogByCategory extends React.Component {
         <div>
           <div className="category">{/* <Category /> */}</div>
           <div className="wrapper-blog">
-            <Category />
+            <Category data={this.state.listCategory} />
             <div className="container">
               <div className="row justify-content-center ">
                 <div className="col-md-3 blog-side-bar">
@@ -112,11 +112,11 @@ class BlogByCategory extends React.Component {
                     value={this.state.search.placeHolder}
                     onChange={this.handleSearch}
                   />
-                  <BlogSidebar data={this.state.listNews} />
+                  <BlogSidebar data={this.state.listNews.slice(0, 5)} />
                   {console.log(this.state.listNews)}
                 </div>
                 <div className="col-md-8">
-                  <BlogContent data={this.state.listNews} />
+                  <BlogContent data={this.state.listNews.slice(15, 20)} />
                 </div>
               </div>
             </div>
