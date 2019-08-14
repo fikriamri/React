@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "./HeaderNews.css";
 import logo_Alta from "../img/logo-ALTA.png";
 import { Link } from "react-router-dom";
 // import Category from "./Category";
@@ -21,29 +21,23 @@ function Header(props) {
             <div className="col-md-9">
               <ul className="menu">
                 <li>
-                  <span>
-                    <input
-                      type="text"
-                      // class="form-control"
-                      id="FormControlInput1"
-                      placeholder="Search..."
-                      autofocus
-                      onChange={props.handleSearch}
-                    />
-                    {/* {console.log(this.state.search)} */}
-                  </span>
-                </li>
-                <li>
                   <Link to="/">home</Link>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/profile">profile</Link>
                 </li>
                 <li>
-                  <Link to="/">contact</Link>
+                  <Link to="/signin">sign in</Link>
                 </li>
                 <li>
-                  <Link to="/blog">blog</Link>
+                  <Link
+                    to="/"
+                    onClick={() => {
+                      localStorage.removeItem("isLogin");
+                    }}
+                  >
+                    sign out
+                  </Link>
                 </li>
               </ul>
             </div>

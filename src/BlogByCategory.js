@@ -11,7 +11,7 @@ import Search from "./components/Search";
 const apiKey = "9a5dcc59b8d449ebbb116d88d043689f";
 const baseUrl = "https://newsapi.org/v2/everything?";
 
-class Blog extends React.Component {
+class BlogByCategory extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,40 +23,52 @@ class Blog extends React.Component {
     };
   }
 
-  handleSearch = event => {
-    this.setState({ search: { keyword: event.target.value } }, () => {
-      this.getData(this.state.search.keyword);
-    });
-  };
-
-  getData = keyword => {
-    const self = this;
-
-    // check apakah keyword kosong
-    if (keyword === "") {
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.match.params.category !== this.props.match.params.category) {
+      const self = this;
       axios
-        .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
+        .get(baseUrl + "sources=" + self.props.match.params.category + apiKey)
         .then(function(response) {
           self.setState({ listNews: response.data.articles.slice(0, 5) });
           console.log(response);
-        })
-        // Handle Error
-        .catch(function(error) {
-          console.log(error);
-        });
-    } else {
-      axios
-        .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
-        .then(function(response) {
-          self.setState({ listNews: response.data.articles.slice(0, 5) });
-          console.log(response);
-        })
-        // Handle Error
-        .catch(function(error) {
-          console.log(error);
         });
     }
   };
+
+  //   handleSearch = event => {
+  //     this.setState({ search: { keyword: event.target.value } }, () => {
+  //       this.getData(this.state.search.keyword);
+  //     });
+  //   };
+
+  //   getData = keyword => {
+  //     const self = this;
+
+  //     // check apakah keyword kosong
+  //     if (keyword === "") {
+  //       axios
+  //         .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
+  //         .then(function(response) {
+  //           self.setState({ listNews: response.data.articles.slice(0, 5) });
+  //           console.log(response);
+  //         })
+  //         // Handle Error
+  //         .catch(function(error) {
+  //           console.log(error);
+  //         });
+  //     } else {
+  //       axios
+  //         .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
+  //         .then(function(response) {
+  //           self.setState({ listNews: response.data.articles.slice(0, 5) });
+  //           console.log(response);
+  //         })
+  //         // Handle Error
+  //         .catch(function(error) {
+  //           console.log(error);
+  //         });
+  //     }
+  //   };
 
   componentDidMount = () => {
     const self = this;
@@ -84,10 +96,10 @@ class Blog extends React.Component {
             <div className="container">
               <div className="row justify-content-center ">
                 <div className="col-md-3 blog-side-bar">
-                  <Search
+                  {/* <Search
                     value={this.state.search.placeHolder}
                     onChange={this.handleSearch}
-                  />
+                  /> */}
                   <BlogSidebar data={this.state.listNews} />
                   {console.log(this.state.listNews)}
                 </div>
@@ -104,4 +116,4 @@ class Blog extends React.Component {
   }
 }
 
-export default Blog;
+export default BlogByCategory;

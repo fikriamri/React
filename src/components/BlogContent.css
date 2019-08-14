@@ -39,6 +39,14 @@ td {
   font-size: 13px;
 }
 
+.source {
+  color: grey;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  font-size: 13px;
+}
+
 .content {
   margin-bottom: 10px;
 }
