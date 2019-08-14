@@ -9,22 +9,19 @@ function Category() {
           <div className="col-md-12">
             <ul className="menu">
               <li>
+                <Link to="/source/axios">axios</Link>
+              </li>
+              <li>
                 <Link to="/source/bbc-news">BBC News</Link>
-              </li>
-              <li>
-                <Link to="/source/cbc-news">CBC News</Link>
-              </li>
-              <li>
-                <Link to="/source/cnbc">cnbc</Link>
-              </li>
-              <li>
-                <Link to="/source/daily-mail">Daily Mail</Link>
               </li>
               <li>
                 <Link to="/source/buzzfeed">Buzzfeed</Link>
               </li>
               <li>
-                <Link to="/source/espn">espn</Link>
+                <Link to="/source/cbc-news">CBC News</Link>
+              </li>
+              <li>
+                <Link to="/source/daily-mail">Daily Mail</Link>
               </li>
             </ul>
           </div>

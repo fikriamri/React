@@ -27,7 +27,13 @@ class BlogByCategory extends React.Component {
     if (prevProps.match.params.category !== this.props.match.params.category) {
       const self = this;
       axios
-        .get(baseUrl + "sources=" + self.props.match.params.category + apiKey)
+        .get(
+          baseUrl +
+            "sources=" +
+            self.props.match.params.category +
+            "&apiKey=" +
+            apiKey
+        )
         .then(function(response) {
           self.setState({ listNews: response.data.articles.slice(0, 5) });
           console.log(response);
@@ -35,40 +41,46 @@ class BlogByCategory extends React.Component {
     }
   };
 
-  //   handleSearch = event => {
-  //     this.setState({ search: { keyword: event.target.value } }, () => {
-  //       this.getData(this.state.search.keyword);
-  //     });
-  //   };
+  handleSearch = event => {
+    this.setState({ search: { keyword: event.target.value } }, () => {
+      this.getData(this.state.search.keyword);
+    });
+  };
 
-  //   getData = keyword => {
-  //     const self = this;
+  getData = keyword => {
+    const self = this;
 
-  //     // check apakah keyword kosong
-  //     if (keyword === "") {
-  //       axios
-  //         .get(baseUrl + "q=indonesia" + "&apiKey=" + apiKey)
-  //         .then(function(response) {
-  //           self.setState({ listNews: response.data.articles.slice(0, 5) });
-  //           console.log(response);
-  //         })
-  //         // Handle Error
-  //         .catch(function(error) {
-  //           console.log(error);
-  //         });
-  //     } else {
-  //       axios
-  //         .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
-  //         .then(function(response) {
-  //           self.setState({ listNews: response.data.articles.slice(0, 5) });
-  //           console.log(response);
-  //         })
-  //         // Handle Error
-  //         .catch(function(error) {
-  //           console.log(error);
-  //         });
-  //     }
-  //   };
+    // check apakah keyword kosong
+    if (keyword === "") {
+      axios
+        .get(
+          baseUrl +
+            "sources=" +
+            self.props.match.params.category +
+            "&apiKey=" +
+            apiKey
+        )
+        .then(function(response) {
+          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          console.log(response);
+        })
+        // Handle Error
+        .catch(function(error) {
+          console.log(error);
+        });
+    } else {
+      axios
+        .get(baseUrl + "q=" + keyword + "&apiKey=" + apiKey)
+        .then(function(response) {
+          self.setState({ listNews: response.data.articles.slice(0, 5) });
+          console.log(response);
+        })
+        // Handle Error
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+  };
 
   componentDidMount = () => {
     const self = this;
@@ -96,10 +108,10 @@ class BlogByCategory extends React.Component {
             <div className="container">
               <div className="row justify-content-center ">
                 <div className="col-md-3 blog-side-bar">
-                  {/* <Search
+                  <Search
                     value={this.state.search.placeHolder}
                     onChange={this.handleSearch}
-                  /> */}
+                  />
                   <BlogSidebar data={this.state.listNews} />
                   {console.log(this.state.listNews)}
                 </div>

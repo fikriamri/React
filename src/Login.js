@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import "./Login.css";
 
-const loginHost = "https://loginnnnn.free.beeceptor.com/login";
+const loginHost = "https://reactchallenge.free.beeceptor.com/login";
 
 class Login extends React.Component {
   constructor(props) {
