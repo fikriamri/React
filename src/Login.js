@@ -7,7 +7,7 @@ import { connect } from "unistore/react";
 import { store, actions } from "./Store";
 // import {actions} from
 
-const loginHost = "https://loginah.free.beeceptor.com/login";
+const loginHost = "https://kabarkabur.free.beeceptor.com/login";
 
 class Login extends React.Component {
   constructor(props) {
@@ -51,6 +51,7 @@ class Login extends React.Component {
       console.log(self.props.email);
       console.log(self.props.isLogin);
       self.props.history.push("/");
+      // bisa juga self.props.history.replace(path yang ingin dituju, contoh "/profile")
     });
   };
 

@@ -11,9 +11,9 @@ function Profile(props) {
     return (
       <div className="profile">
         <h4>Name:</h4>
-        <h4>{localStorage.getItem("nama")}</h4>
+        <h4>{props.nama}</h4>
         <h4>Email:</h4>
-        <h4>{localStorage.getItem("email")}</h4>
+        <h4>{props.email}</h4>
       </div>
     );
   }
